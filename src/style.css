@@ -228,72 +228,9 @@ input {
     background: white;
     border-top: 1px solid #e2e8f0;
     padding: 1.5rem 0 0 0;
-    position: fixed;
-    bottom: 0;
     width: 100%;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-    z-index: 1000;
-}
-
-.footer-minimized {
-    transform: translateY(calc(100% - 60px));
-}
-
-/* Show full footer on hover */
-.footer-minimized:hover {
-    transform: translateY(0);
-}
-
-.footer-minimized .expandable {
-    opacity: 0;
-    visibility: hidden;
-    height: 0;
-    margin: 0;
-    padding: 0;
-}
-
-/* Show expandable content on hover */
-.footer-minimized:hover .expandable {
-    opacity: 1;
-    visibility: visible;
-    height: auto;
-    margin: initial;
-    padding: initial;
-}
-
-.footer-minimized .footer-content {
-    padding: 0 2rem;
-}
-
-.footer-minimized .main-section {
-    padding: 0.5rem 0;
-}
-
-.footer-minimized .footer-title {
-    margin: 0;
-    font-size: 1rem;
-    position: relative;
-}
-
-/* Add hover indicator */
-.footer-minimized .footer-title::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: -20px;
-    transform: translateY(-50%);
-    width: 8px;
-    height: 8px;
-    border-top: 2px solid #2196F3;
-    border-right: 2px solid #2196F3;
-    rotate: -45deg;
-    opacity: 0.7;
-    transition: all 0.3s ease;
-}
-
-.footer-minimized:hover .footer-title::after {
-    opacity: 0;
+    margin-top: auto;
 }
 
 .footer-content {
@@ -303,12 +240,10 @@ input {
     display: flex;
     justify-content: space-between;
     gap: 2rem;
-    transition: all 0.3s ease;
 }
 
 .footer-section {
     flex: 1;
-    transition: all 0.3s ease;
 }
 
 .footer-title {
@@ -316,7 +251,6 @@ input {
     font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: 0.75rem;
-    transition: all 0.3s ease;
 }
 
 .footer-subtitle {
@@ -342,11 +276,6 @@ input {
     color: #718096;
     text-decoration: none;
     font-size: 0.875rem;
-    transition: color 0.2s ease;
-}
-
-.footer-nav a:hover {
-    color: #2196F3;
 }
 
 .social-links {
@@ -356,11 +285,6 @@ input {
 
 .social-links a {
     color: #718096;
-    transition: color 0.2s ease;
-}
-
-.social-links a:hover {
-    color: #2196F3;
 }
 
 .footer-bottom {
@@ -370,7 +294,6 @@ input {
     background: #f8fafc;
     color: #718096;
     font-size: 0.875rem;
-    transition: all 0.3s ease;
 }
 
 .expandable {
@@ -396,31 +319,14 @@ input {
     .social-links {
         justify-content: center;
     }
-
-    .footer {
-        padding-top: 1rem;
-    }
-
-    .footer-minimized {
-        transform: translateY(calc(100% - 50px));
-    }
-    
-    .footer-minimized .footer-title::after {
-        right: -15px;
-        width: 6px;
-        height: 6px;
-    }
 }
 
 /* Adjust main content to account for footer */
 .App {
-    padding-bottom: 200px;
-}
-
-@media (max-width: 768px) {
-    .App {
-        padding-bottom: 300px;
-    }
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0;
 }
 
 /* media query for responsive design  */
@@ -533,8 +439,8 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 100px;
   gap:2px;
+  margin-bottom: 40px;
  
 }
 
@@ -585,7 +491,7 @@ input {
   }
   .pagination {
     margin-top: 10px;
-    margin-bottom: 100px; 
+    margin-bottom: 40px;
   }
   .pagination button {
     padding: 3px 3px; 
@@ -651,7 +557,6 @@ input {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin: 2rem 0 6rem 0;
 }
 
 .pagination {
@@ -752,5 +657,47 @@ input {
 /* Stop animation on hover */
 .footer-minimized:hover .footer-title::after {
     animation: none;
+}
+
+/* Remove extra padding/margin from about-page */
+.about-page {
+    background-color: white;
+    color: #333;
+    margin-top: 0;
+    padding-top: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Update hero section padding */
+.hero-section {
+    background: linear-gradient(135deg, #2196F3 0%, #64B5F6 100%);
+    padding: 3rem 2rem; /* Reduced from 6rem to 3rem */
+    text-align: center;
+    color: white;
+    margin-top: 0; /* Ensure no top margin */
+}
+
+/* Add this class for no top padding */
+.no-top-padding {
+    padding-top: 2rem; /* Even smaller top padding */
+}
+
+/* Ensure navbar doesn't add extra space */
+.navbar + .hero-section {
+    margin-top: 0;
+}
+
+/* Update hero content spacing */
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: 0; /* Ensure no top padding */
+}
+
+/* Ensure main content takes up available space */
+.main-content {
+    flex: 1;
 }
 

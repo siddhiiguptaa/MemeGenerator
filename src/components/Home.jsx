@@ -91,63 +91,61 @@ const Home = () => {
   };
 
   return (
-    
     <div className="App">
       <Navbar setMeme={setMeme} />
 
-      {meme === null ? (
-        <>
-          <MemeSearch
-            searchQuery={searchQuery}
-            setSearchQuery={setSearchQuery}
-          />
-          <Temp temp={currentMemes} setMeme={setMeme} />
-          <div className="pagination-container">
-            <div className="pagination">
-              <button
-                className={`pagination-button prev-next ${currentPage === 1 ? 'disabled' : ''}`}
-                onClick={prevPage}
-                disabled={currentPage === 1}
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path d="M15 18l-6-6 6-6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                Prev
-              </button>
+      <div className="main-content">
+        {meme === null ? (
+          <>
+            <MemeSearch
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+            />
+            <Temp temp={currentMemes} setMeme={setMeme} />
+            <div className="pagination-container">
+              <div className="pagination">
+                <button
+                  className={`pagination-button prev-next ${currentPage === 1 ? 'disabled' : ''}`}
+                  onClick={prevPage}
+                  disabled={currentPage === 1}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M15 18l-6-6 6-6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  Prev
+                </button>
 
-              {getVisiblePageNumbers().map((page, index) => (
-                page === '...' ? (
-                  <span key={`dots-${index}`} className="pagination-dots">...</span>
-                ) : (
-                  <button
-                    key={page}
-                    onClick={() => paginate(page)}
-                    className={`pagination-button page-number ${currentPage === page ? 'active' : ''}`}
-                  >
-                    {page}
-                  </button>
-                )
-              ))}
+                {getVisiblePageNumbers().map((page, index) => (
+                  page === '...' ? (
+                    <span key={`dots-${index}`} className="pagination-dots">...</span>
+                  ) : (
+                    <button
+                      key={page}
+                      onClick={() => paginate(page)}
+                      className={`pagination-button page-number ${currentPage === page ? 'active' : ''}`}
+                    >
+                      {page}
+                    </button>
+                  )
+                ))}
 
-              <button
-                className={`pagination-button prev-next ${currentPage === Math.ceil(filteredMemes.length / itemsPerPage) ? 'disabled' : ''}`}
-                onClick={nextPage}
-                disabled={currentPage === Math.ceil(filteredMemes.length / itemsPerPage)}
-              >
-                Next
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path d="M9 18l6-6-6-6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </button>
+                <button
+                  className={`pagination-button prev-next ${currentPage === Math.ceil(filteredMemes.length / itemsPerPage) ? 'disabled' : ''}`}
+                  onClick={nextPage}
+                  disabled={currentPage === Math.ceil(filteredMemes.length / itemsPerPage)}
+                >
+                  Next
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M9 18l6-6-6-6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+              </div>
             </div>
-          </div>
-        </>
-      ) : (
-        <>
-          {/* {navigate("/meme")}; */}
+          </>
+        ) : (
           <Meme meme={meme} setMeme={setMeme} />
-        </>
-      )}
+        )}
+      </div>
 
       <Footer />
     </div>
