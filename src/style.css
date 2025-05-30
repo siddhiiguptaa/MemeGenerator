@@ -11,11 +11,11 @@
 
   /* COLORS */
 
-  --color-background: #000000ec;
-  --color-primary: #6fb7d7;
-  --color-secondary: #8bf710ec;
-  --color-tertiary: #0C356A;
-  --color-text: #fff;
+  --color-background: #ffffff;
+  --color-primary: #2196F3;
+  --color-secondary: #4CAF50;
+  --color-tertiary: #E3F2FD;
+  --color-text: #333333;
 
   /* ====== */
 
@@ -87,7 +87,7 @@ h2 {
 /*Added Navbar*/
 /* Navbar container */
 .navbar {
-  background-color: var(--color-background);
+  background-color: #ffffff;
   display: flex;
   justify-content: space-between;
   border-radius: 5px;
@@ -97,7 +97,7 @@ h2 {
   border-bottom-right-radius: 50px;
   align-items: center;
   padding: 20px 40px;
-  box-shadow: inset rgba(63, 64, 65, 0.363) -10px -14px 16px, rgba(124, 215, 221, 0.22) 1px -2px 20px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   color: var(--color-text);
   position: sticky;
   top: 0;
@@ -119,10 +119,13 @@ h2 {
 .nav-links {
   list-style: none;
   display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .nav-links li {
-  margin-right: 20px; /* Adjust spacing between links */
+  display: flex;
+  align-items: center;
 }
 
 .nav-links a {
@@ -183,8 +186,8 @@ h2 {
   width: 100px;
   height: 45px;
   border-radius: 10px;
-  color: var(--color-secondary);
-  background-color: var(--color-tertiary);
+  color: #ffffff;
+  background-color: #2196F3;
   cursor: pointer;
 }
 
@@ -196,14 +199,14 @@ input {
   border-top: none;
   border-left: none;
   border-right: none;
-  border-bottom: 1px solid var(--color-text);
-  color: var(--color-secondary);
+  border-bottom: 1px solid #333333;
+  color: #333333;
   font-size: var(--font-size-large);
 }
 
 ::placeholder {
-  color: rgb(139, 247, 16);
-  opacity: 0.5;
+  color: #666666;
+  opacity: 0.7;
 }
 
 .generatebutton {
@@ -214,24 +217,210 @@ input {
   background: transparent;
   font-size: var(--font-size-large);
   border-radius: 10px;
-  color: var(--color-secondary);
-  background-color: var(--color-tertiary);
+  color: #ffffff;
+  background-color: #4CAF50;
   cursor: pointer;
   margin-bottom: 100px;
 }
 
+/* Footer Styles */
 .footer {
-  background-color: var(--color-background);
-  color: var(--color-text);
-  padding: 10px 0;
-  text-align: center;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+    background: white;
+    border-top: 1px solid #e2e8f0;
+    padding: 1.5rem 0 0 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    z-index: 1000;
 }
 
-.footer p {
-  margin: 0;
+.footer-minimized {
+    transform: translateY(calc(100% - 60px));
+}
+
+/* Show full footer on hover */
+.footer-minimized:hover {
+    transform: translateY(0);
+}
+
+.footer-minimized .expandable {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Show expandable content on hover */
+.footer-minimized:hover .expandable {
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+    margin: initial;
+    padding: initial;
+}
+
+.footer-minimized .footer-content {
+    padding: 0 2rem;
+}
+
+.footer-minimized .main-section {
+    padding: 0.5rem 0;
+}
+
+.footer-minimized .footer-title {
+    margin: 0;
+    font-size: 1rem;
+    position: relative;
+}
+
+/* Add hover indicator */
+.footer-minimized .footer-title::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #2196F3;
+    border-right: 2px solid #2196F3;
+    rotate: -45deg;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.footer-minimized:hover .footer-title::after {
+    opacity: 0;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    transition: all 0.3s ease;
+}
+
+.footer-section {
+    flex: 1;
+    transition: all 0.3s ease;
+}
+
+.footer-title {
+    color: #2196F3;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.footer-subtitle {
+    color: #4a5568;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.footer-description {
+    color: #718096;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer-nav a {
+    color: #718096;
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.2s ease;
+}
+
+.footer-nav a:hover {
+    color: #2196F3;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    color: #718096;
+    transition: color 0.2s ease;
+}
+
+.social-links a:hover {
+    color: #2196F3;
+}
+
+.footer-bottom {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    text-align: center;
+    background: #f8fafc;
+    color: #718096;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+}
+
+.expandable {
+    transition: all 0.3s ease;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+
+    .footer-section {
+        text-align: center;
+    }
+
+    .footer-nav {
+        align-items: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .footer {
+        padding-top: 1rem;
+    }
+
+    .footer-minimized {
+        transform: translateY(calc(100% - 50px));
+    }
+    
+    .footer-minimized .footer-title::after {
+        right: -15px;
+        width: 6px;
+        height: 6px;
+    }
+}
+
+/* Adjust main content to account for footer */
+.App {
+    padding-bottom: 200px;
+}
+
+@media (max-width: 768px) {
+    .App {
+        padding-bottom: 300px;
+    }
 }
 
 /* media query for responsive design  */
@@ -287,10 +476,12 @@ input {
   width: 100%;
   max-width: 300px;
   padding: 10px;
-  border: 2px solid #333;
+  border: 2px solid #e0e0e0;
   border-radius: 20px;
   font-size: var(--font-size-normal);
   outline: none;
+  color: #333333;
+  background-color: #ffffff;
 }
 
 
@@ -315,9 +506,9 @@ input {
   align-items: center;
   padding: 1.5rem;
   height: 100vh;
-  background-color: var(--color-background);
+  background-color: #ffffff;
   text-align: left;
-  color: var(--color-text);
+  color: #333333;
   gap: 20px;
 }
 .right {
@@ -348,11 +539,12 @@ input {
 }
 
 .pagination button{
-  background-color: var(--color-text);
+  background-color: #ffffff;
   padding: 5px 5px;
-  border:1px solid grey;
+  border:1px solid #e0e0e0;
   border-radius: 2px;
   cursor: pointer;
+  color: #333333;
 }
 
 /*Mobile responsive*/
@@ -407,5 +599,158 @@ input {
     max-width: 300px; 
     height: auto; 
   }
+}
+
+/* Add these new styles */
+.nav-button {
+    background: transparent;
+    border: none;
+    color: inherit;
+    font-size: var(--font-size-large);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: inherit;
+}
+
+.nav-button:hover {
+    color: var(--color-primary);
+    transform: translateX(-2px);
+}
+
+/* Update existing nav-links styles */
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-links li {
+    display: flex;
+    align-items: center;
+}
+
+/* Update mobile styles */
+@media screen and (max-width: 768px) {
+    .nav-button {
+        padding: 0.25rem 0.5rem;
+        font-size: var(--font-size-normal);
+    }
+    
+    .nav-links {
+        gap: 0.5rem;
+    }
+}
+
+/* Pagination Styles */
+.pagination-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0 6rem 0;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.pagination-button {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  background: white;
+  color: #4a5568;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pagination-button:hover:not(.disabled) {
+  background: #2196F3;
+  color: white;
+  border-color: #2196F3;
+}
+
+.pagination-button.active {
+  background: #2196F3;
+  color: white;
+  border-color: #2196F3;
+}
+
+.pagination-button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: #f7fafc;
+}
+
+.pagination-button.prev-next {
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+}
+
+.pagination-dots {
+  color: #4a5568;
+  padding: 0 0.25rem;
+}
+
+.page-number {
+  min-width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+  .pagination {
+    gap: 0.25rem;
+    padding: 0.25rem;
+  }
+
+  .pagination-button {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .page-number {
+    min-width: 2rem;
+    height: 2rem;
+  }
+
+  .pagination-button.prev-next svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* Add a subtle animation for the hover indicator */
+@keyframes bounce {
+    0%, 100% { transform: translateY(-50%); }
+    50% { transform: translateY(-30%); }
+}
+
+.footer-minimized .footer-title::after {
+    animation: bounce 2s infinite ease-in-out;
+}
+
+/* Stop animation on hover */
+.footer-minimized:hover .footer-title::after {
+    animation: none;
 }
 
